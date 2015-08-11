@@ -1,12 +1,20 @@
-import NativePackagerKeys._
+enablePlugins(JavaAppPackaging, DockerPlugin)
 
 name := "weather-service"
-
-packageArchetype.java_application
 
 version := "1.0"
 
 scalaVersion := "2.11.7"
+
+packageName in Docker := "betenkowski/scalania-weather-service"
+
+version in Docker := "latest"
+
+maintainer := "Bartłomiej Etenkowski"
+
+dockerBaseImage := "java:8"
+
+dockerExposedPorts := Seq(8080)
 
 libraryDependencies ++= {
   val sprayVersion = "1.3.3"
